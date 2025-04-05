@@ -104,10 +104,12 @@ service cloud.firestore {<br>
                     <div class="auth-main">
                         <form id="login">
                             <div class="input-group">
-                                <input type="email" placeholder="Email" required>
+                                <label for="loginEmail">Email</label>
+                                <input type="email" id="loginEmail" name="email" placeholder="Email" required>
                             </div>
                             <div class="input-group">
-                                <input type="password" placeholder="Password" required>
+                                <label for="loginPassword">Password</label>
+                                <input type="password" id="loginPassword" name="password" placeholder="Password" required>
                             </div>
                             <button type="submit" class="login-btn">Login</button>
                         </form>
@@ -137,10 +139,12 @@ service cloud.firestore {<br>
                     <div class="auth-main">
                         <form id="signup">
                             <div class="input-group">
-                                <input type="email" placeholder="Email" required>
+                                <label for="signupEmail">Email</label>
+                                <input type="email" id="signupEmail" name="email" placeholder="Email" required>
                             </div>
                             <div class="input-group">
-                                <input type="password" placeholder="Password" required>
+                                <label for="signupPassword">Password</label>
+                                <input type="password" id="signupPassword" name="password" placeholder="Password" required>
                             </div>
                             <button type="submit" class="signup-btn">Create Account</button>
                         </form>
