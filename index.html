@@ -4,20 +4,89 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AG | Home</title>
-
-    <link rel="icon" href="https://raw.githubusercontent.com/AG-Pixel-creater/Images/refs/heads/main/Screenshot_2025-04-03_063111-removebg-preview.png" type="logo.png">
     
-  <script type="module" crossorigin src="/AG/assets/index-2U7100SL.js"></script>
-  <link rel="modulepreload" crossorigin href="/AG/assets/firebase-config-DAJCI8_5.js">
-  <link rel="modulepreload" crossorigin href="/AG/assets/index.esm2017-BSwLSc3b.js">
-  <link rel="modulepreload" crossorigin href="/AG/assets/index.esm2017-CRsp8WJ6.js">
-  <link rel="stylesheet" crossorigin href="/AG/assets/index-DVpDbdBu.css">
-</head>
+    <link rel="icon" href="https://raw.githubusercontent.com/AG-Pixel-creater/Images/refs/heads/main/Screenshot_2025-04-03_063111-removebg-preview.png" type="logo.png">
+  <!-- <style>
+    .error-container {
+        background-color: #f8d7da;
+        color: #721c24;
+        padding: 10px;
+        margin: 10px 0;
+        border-radius: 5px;
+        border: 1px solid #f5c6cb;
+    }
+    .error-heading {
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
+    .error-details {
+        font-family: monospace;
+        white-space: pre-wrap;
+        margin-top: 10px;
+        background: #f5f5f5;
+        padding: 8px;
+        border-radius: 4px;
+        max-height: 200px;
+        overflow: auto;
+    }
+    .instructions {
+        background-color: #d4edda;
+        color: #155724;
+        padding: 10px;
+        margin: 10px 0;
+        border-radius: 5px;
+        border: 1px solid #c3e6cb;
+    }
+    .instructions h3 {
+        margin-top: 0;
+    }
+    .instructions code {
+        background: #f5f5f5;
+        padding: 2px 4px;
+        border-radius: 4px;
+        font-family: monospace;
+    }
+  </style>
+  <script type="module" crossorigin src="/assets/index-jNGtWFg6.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-DVpDbdBu.css">
+</head> -->
 <body data-theme="dark">
     <br><br><br>
     <div class="container">
         <h1>AG | Home </h1>
         
+        <!-- Error container for displaying Firebase errors
+        <div id="errorContainer" class="error-container hidden">
+            <div class="error-heading">Error:</div>
+            <div id="errorMessage"></div>
+            <div id="errorDetails" class="error-details"></div>
+        </div> -->
+        
+        <!-- Firestore setup instructions
+        <div id="firestoreInstructions" class="instructions hidden">
+            <h3>Firebase Permissions Issue</h3>
+            <p>It looks like your Firebase Firestore security rules need to be updated. Please follow these steps:</p>
+            <ol>
+                <li>Go to your <a href="https://console.firebase.google.com/" target="_blank" rel="noopener noreferrer">Firebase Console</a></li>
+                <li>Select your project</li>
+                <li>Navigate to Firestore Database in the left sidebar</li>
+                <li>Click on the "Rules" tab</li>
+                <li>Replace the rules with the following:</li>
+                <code>
+                    rules_version = '2';<br>
+service cloud.firestore {<br>
+&nbsp;&nbsp;match /databases/{database}/documents {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;match /users/{userId}/{document=**} {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;allow read, write: if request.auth != null && request.auth.uid == userId;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;}<br>
+}
+                </code>
+                <li>Click "Publish" to apply the rules</li>
+                <li>Refresh this page</li>
+            </ol>
+        </div> -->
+            
         <div class="header-controls">
             <button id="settingsBtn" class="settings-btn" title="Settings">
                 <svg width="20" height="20" viewBox="0 0 20 20">
@@ -123,6 +192,48 @@
         </div>
     </div>
     
-    <!-- Add Firebase SDK -->
+    <!-- Scripts with type="module" to support ES6 imports -->
+    <script nomodule>
+        document.body.innerHTML = '<div class="error-message">Your browser does not support ES modules. Please use a modern browser like Chrome, Firefox, or Edge.</div>';
+    </script>
+    
+    <!-- Script to display Firestore errors nicely -->
+    <!-- <script type="module">
+        window.addEventListener('error', function(event) {
+            console.error('Global error:', event.error);
+            showError(event.error);
+        });
+        
+        window.addEventListener('unhandledrejection', function(event) {
+            console.error('Unhandled promise rejection:', event.reason);
+            showError(event.reason);
+        });
+        
+        function showError(error) {
+            const errorContainer = document.getElementById('errorContainer');
+            const errorMessage = document.getElementById('errorMessage');
+            const errorDetails = document.getElementById('errorDetails');
+            
+            if (errorContainer && errorMessage) {
+                errorContainer.classList.remove('hidden');
+                
+                // Format the error message
+                let message = error.message || 'An unknown error occurred';
+                errorMessage.textContent = message;
+                
+                // Show detailed error information
+                if (error.stack) {
+                    errorDetails.textContent = error.stack;
+                } else {
+                    errorDetails.textContent = JSON.stringify(error, null, 2);
+                }
+                
+                // Show Firestore instructions if it's a permission error
+                if (message.includes('Missing or insufficient permissions')) {
+                    document.getElementById('firestoreInstructions').classList.remove('hidden');
+                }
+            }
+        }
+    </script> -->
 </body>
 </html>
