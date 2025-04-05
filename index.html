@@ -4,68 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AG | Home</title>
-    <style>
-        :root {
-            --bg-color: #f5f5f5;
-            --text-color: #333;
-            --container-bg: #fff;
-            --accent-color: #6c63ff;
-            --button-bg: #007bff;
-            --modal-overlay: rgba(0,0,0,0.5);
-        }
-        [data-theme="dark"] {
-            --bg-color: #1a1a1a;
-            --text-color: #fff;
-            --container-bg: #2d2d2d;
-            --button-bg: #6c63ff;
-            --modal-overlay: rgba(0,0,0,0.7);
-        }
-        body {
-            margin: 0;
-            font-family: system-ui, -apple-system, sans-serif;
-            background: var(--bg-color);
-            color: var(--text-color);
-            transition: all 0.3s;
-        }
-        .container { max-width: 800px; margin: 2rem auto; padding: 2rem; }
-        .hidden { display: none !important; }
-        .auth-container-wrapper { position: relative; min-height: 400px; }
-        .auth-layout { display: flex; gap: 20px; }
-        .auth-main { flex: 1; }
-        .input-group input {
-            width: 100%;
-            padding: 12px;
-            margin: 8px 0;
-            border: 1px solid var(--accent-color);
-            border-radius: 4px;
-            background: var(--container-bg);
-            color: var(--text-color);
-        }
-        .login-btn, .signup-btn, .social-btn {
-            width: 100%;
-            padding: 12px;
-            margin: 8px 0;
-            border: none;
-            border-radius: 4px;
-            background: var(--button-bg);
-            color: white;
-            cursor: pointer;
-        }
-        .modal {
-            position: fixed;
-            inset: 0;
-            background: var(--modal-overlay);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        .modal-content {
-            background: var(--container-bg);
-            padding: 2rem;
-            border-radius: 8px;
-            min-width: 300px;
-        }
-    </style>
+  <link rel="stylesheet" crossorigin href="/AG/assets/main-BD_5bq2H.css">
 </head>
 <body data-theme="dark">
     <br><br><br>
@@ -177,49 +116,6 @@
         </div>
     </div>
     
-    <script>
-        // Initialize theme
-        const setTheme = theme => {
-            document.body.setAttribute('data-theme', theme);
-            localStorage.setItem('theme', theme);
-        };
-
-        // DOM Ready
-        document.addEventListener('DOMContentLoaded', () => {
-            const savedTheme = localStorage.getItem('theme') || 'dark';
-            setTheme(savedTheme);
-
-            // Theme buttons
-            document.querySelectorAll('.theme-btn').forEach(btn => {
-                btn.addEventListener('click', () => setTheme(btn.dataset.theme));
-            });
-
-            // Settings modal
-            const modal = document.getElementById('settingsModal');
-            const settingsBtn = document.getElementById('settingsBtn');
-            const closeBtn = document.getElementById('closeSettings');
-
-            settingsBtn?.addEventListener('click', () => 
-                modal.classList.remove('hidden'));
-            closeBtn?.addEventListener('click', () => 
-                modal.classList.add('hidden'));
-
-            // Auth form switching
-            const showSignup = document.getElementById('showSignup');
-            const showLogin = document.getElementById('showLogin');
-            const loginForm = document.getElementById('loginForm');
-            const signupForm = document.getElementById('signupForm');
-
-            showSignup?.addEventListener('click', () => {
-                loginForm.classList.add('hidden');
-                signupForm.classList.remove('hidden');
-            });
-
-            showLogin?.addEventListener('click', () => {
-                signupForm.classList.add('hidden');
-                loginForm.classList.remove('hidden');
-            });
-        });
-    </script>
+    <script src="./js/app.js"></script>
 </body>
 </html>
